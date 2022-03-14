@@ -1,0 +1,7 @@
+#!/bin/bash
+yad --title "StormOS Game Launchers" --form --columns=2 --width=480 --height=175 --text="Use this tool to install your favourite Game Launchers." --image=/usr/share/icons/scalable/apps/stormos.png  \
+--field="<b>Install Steam (Native)</b>":fbtn "konsole -e 'sudo pacman -S steam-native-runtime'" \
+--field="<b>Install Heroic Launcher</b>":fbtn "konsole -e 'sudo pacman -S heroic-games-launcher-bin'" \
+--field="<b>Install Lutris Launcher</b>":fbtn "konsole -e 'sudo pacman -R glxinfo && sudo pacman -S lutris gamemode'" \
+--field="<b>Install ProtonGE Updater</b>":fbtn "konsole -e 'sudo pacman -S proton-community-updater'" \
+--button=Exit:1
