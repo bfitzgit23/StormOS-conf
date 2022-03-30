@@ -3,11 +3,11 @@
 pkgname = stormos-conf
 pkgbase = stormos-conf
 pkgver = 0.1.0-1
-pkgdesc = XeroLinux Configuration Tool
+pkgdesc = StormOS Configuration Tool
 url = https://github.com/bfitzgit23
-builddate = 1648631036
+builddate = 1648631577
 packager = Unknown Packager
-size = 301743
+size = 618069
 arch = any
 license = GPL3
 provides = stormos-conf
