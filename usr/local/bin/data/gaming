@@ -4,4 +4,5 @@ yad --title "StormOS Game Launchers" --form --columns=2 --width=480 --height=175
 --field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'yay -S heroic-games-launcher-bin'" \
 --field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -R glxinfo && sudo pacman -S lutris gamemode'" \
 --field="<b>Install ProtonGE Updater</b>":fbtn "xfce4-terminal -e 'yay -S proton-community-updater'" \
+--field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm bottles'" \
 --button=Exit:1
