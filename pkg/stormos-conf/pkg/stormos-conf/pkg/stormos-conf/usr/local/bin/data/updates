@@ -1,5 +1,0 @@
-#!/bin/bash
-yad --title "StormOS Updater" --form --columns=2 --width=480 --height=175 --text="Use this tool to install your updates." --image=/usr/share/icons/scalable/apps/stormos.png  \
---field="<b>System Updates</b>":fbtn "xfce4-terminal -e 'sudo pacman -Syyu'" \
---field="<b>AUR Updates</b>":fbtn "xfce4-terminal -e 'yay -Syyu'" \
---button=Exit:1

@@ -3,5 +3,5 @@ yad --title "StormOS Maintenance" --form --columns=2 --width=480 --height=175 --
 --field="<b>System Updates</b>":fbtn "xfce4-terminal -e 'sudo pacman -Syyu --noconfirm'" \
 --field="<b>AUR Updates</b>":fbtn "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
 --field="<b>Mirrors Refresh</b>":fbtn "xfce4-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'" \
---field="<b>Update StormOS Keyring</b>":fbtn "xfce4-terminal -e 'sudo pacman -S archlinux-keyring --noconfirm'" \
+--field="<b>Update StormOS Keyring</b>":fbtn "xfce4-terminal -e 'sudo pacman-key --refresh-keys'"  \
 --button=Exit:1
