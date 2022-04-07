@@ -1,8 +1,51 @@
 #!/bin/bash
-yad --title "StormOS Configuration Tool" --form --columns=2 --width=480 --height=160 --text="Use this tool for extra stuff." --image=/usr/share/icons/scalable/apps/stormos.png  \
+# Written By Seeker for StormFish OS/Storm OS
+
+id=$(echo $[($RANDOM % ($[10000 - 32000] + 1)) + 10000] )
+echo "$id"
+
+yad --plug="$id" --tabnum=1 --form \
 --field="<b>Visit StormOS Site</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
---field="<b>Gaming AiO Installer</b>":fbtn '/usr/local/bin/data/gaming' \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
 --field="<b>Disable Autostart</b>":fbtn "xfce4-terminal -e 'rm $HOME/.config/autostart/sysconfig.desktop'" \
---field="<b>Maintenance</b>":fbtn '/usr/local/bin/data/maintenance' \
---button=Exit:1
+--field="Reserved:FBTN" "eom" &> /tmp/data1 &
+
+yad --plug="$id" --tabnum=2 --form \
+--field="Step 1. Refresh Mirrors:FBTN" "xfce4-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'" \
+--field="Step 2. System Updates:FBTN" "xfce4-terminal  -e 'sudo pacman -Syyu'" \
+--field="Step 3. Aur Updates:FBTN" "xfce4-terminal -e 'yay -Syyu'" \
+--field="Step 4. (Optional) Arch Keyring Updater:FBTN" "xfce4-terminal -e 'sudo pacman -S archlinux-keyring --noconfirm'" \
+--field="Reserved:FBTN" "eom" &> /tmp/data2 &
+
+
+
+yad --plug="$id" --tabnum=3 --form \
+--field="<b>Discord</b>":FBTN "xfce4-terminal -e 'sudo pacman -S discord --noconfirm'" \
+--field="<b>Install Steam Native</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'" \
+--field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm heroic-games-launcher-bin gamemode'" \
+--field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'" \
+--field="<b>Install ProtonGE Updater</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm proton-community-updater'" \
+--field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm mangohud goverlay-bin'" \
+--field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm bottles'" \
+--field="Reserved:FBTN" "eom" &> /tmp/data3 &
+
+yad --notebook --key="$id" --center --tab-pos=left --width=480 --height=175 --tab "Welcome" --tab="Maintenance and Updates" --tab="Programs and Games Installer" --image=/usr/share/icons/scalable/apps/stormos.png \
+--title="StormFish OS and Storm OS Utilities Program" \
+--text="Greetings $USER Use this tool to Maintain and Upgrade your StormFish OS and or Storm OS" \
+--justify=center \
+
+#StormOS." --image=/usr/share/icons/scalable/apps/stormos.png"  \
+
+case $? in
+    0)
+    exit;;
+    1)
+    exit;;
+    70)
+    exit;;
+    252)
+    exit;;
+esac
+
+
+#StormOS." --image=/usr/share/icons/scalable/apps/stormos.png  \
