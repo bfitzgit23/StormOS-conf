@@ -22,11 +22,11 @@ yad --plug="$id" --tabnum=2 --form \
 yad --plug="$id" --tabnum=3 --form \
 --field="<b>Discord</b>":FBTN "xfce4-terminal -e 'sudo pacman -S discord --noconfirm'" \
 --field="<b>Install Steam Native</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'" \
---field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm heroic-games-launcher-bin gamemode'" \
+--field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm heroic-games-launcher-bin gamemode'" \
 --field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'" \
 --field="<b>Install ProtonGE Updater</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm proton-community-updater'" \
---field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm mangohud goverlay-bin'" \
---field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm bottles'" \
+--field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'" \
+--field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
 --field="Reserved:FBTN" "eom" &> /tmp/data3 &
 
 yad --notebook --key="$id" --center --tab-pos=left --width=480 --height=175 --tab "Welcome" --tab="Maintenance and Updates" --tab="Programs and Games Installer" --image=/usr/share/icons/scalable/apps/stormos.png \
