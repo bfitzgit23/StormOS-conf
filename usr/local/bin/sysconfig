@@ -9,7 +9,6 @@ yad --plug="$id" --tabnum=1 --form \
 --field="<b>Visit The StormOS Site</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
---field="<b>Disable Autostart</b>":fbtn "xfce4-terminal -e 'rm $HOME/.config/autostart/sysconfig.desktop'" \
 --field="Reserved:BTN" "eom" &> /tmp/data1 &
 
 yad --plug="$id" --tabnum=2 --form \
