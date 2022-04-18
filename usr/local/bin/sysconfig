@@ -61,7 +61,7 @@ yad --notebook --key="$id" --center --tab-pos=top --width=480 --height=175 --tab
 --button="Logout":"xfce4-session-logout" \
 --button="System Info Lshw Non-Graphical":"xfce4-terminal -H -x sudo lshw -short" \
 --button="System Resources":"xfce4-terminal -H -x top" \
---button="Update Maintenance Program":"xfce4-terminal -e 'sudo pacman -S stormos-conf --noconfirm'" \
+--button="Update Maintenance Program":"xfce4-terminal -e 'utilityup &'" \
 --button="Launch Terminal":"xfce4-terminal" \
 --button="Launch Browser":"firefox" \
 --button="Exit" \
