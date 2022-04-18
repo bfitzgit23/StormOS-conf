@@ -26,6 +26,7 @@ yad --plug="$id" --tabnum=2 --form \
 --field="<b>Step 9. Launch Warpinator</b>":FBTN "xfce4-terminal -e  'warpinator'" \
 --field="<b>Step 10. Incase warpinator leaves a terminal open click this. </b>":FBTN "xfce4-terminal -e  'killall warpinator'" \
 --field="<b>Step 11. Installation of Lshw for System Info Button</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
+--field="<b>Step 12. Lshw for System Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -60,7 +61,6 @@ yad --notebook --key="$id" --center --tab-pos=top --width=480 --height=175 --tab
 --justify=center \
 --button="Logout":"xfce4-session-logout" \
 --button="System Info Lshw Non-Graphical":"xfce4-terminal -H -x sudo lshw -short" \
---button="System Info Lshw to Text":"xfce4-terminal -H -x lshwinfo" \
 --button="System Resources":"xfce4-terminal -H -x top" \
 --button="Update Maintenance Program":"xfce4-terminal -e 'sudo pacman -S stormos-conf --noconfirm'" \
 --button="Launch Terminal":"xfce4-terminal" \
