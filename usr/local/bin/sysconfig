@@ -18,7 +18,7 @@ yad --plug="$id" --tabnum=2 --form \
 --field="<b>Step 1. Refresh Mirrors</b>":FBTN "xfce4-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'" \
 --field="<b>Step 2. System Updates</b>":FBTN "xfce4-terminal  -e 'sudo pacman -Syyu --noconfirm'" \
 --field="<b>Step 3. Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
---field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'sudo pacman -S archlinux-keyring --noconfirm'" \
+--field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'sudo pacman -S teamviewer --noconfirm'" \
 --field="<b>Step 6. Activate Teamviewer daemon for remote access</b>":FBTN "xfce4-terminal -e ' teamviewer --daemon start'" \
 --field="<b>Step 7. Launch Teamviewer for Remote Support</b>":FBTN "xfce4-terminal -e '/opt/teamviewer/tv_bin/script/teamviewer'" \
