@@ -5,7 +5,7 @@
 id=$(echo $[($RANDOM % ($[10000 - 32000] + 1)) + 10000] )
 echo "$id"
 
-yad --plug="$id" --tabnum=1 --form \
+yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
 --field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Information on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
@@ -14,7 +14,7 @@ yad --plug="$id" --tabnum=1 --form \
 --field="<b>Step 2. Visit us and Join The StormOS/StormFishOS Discord Channel</b>":fbtn "xdg-open https://discord.gg/36JkjDVUP9" \
 --field="Reserved:BTN" "eom" &> /tmp/data1 &
 
-yad --plug="$id" --tabnum=2 --form \
+yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Step 1. Refresh Mirrors</b>":FBTN "xfce4-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'" \
 --field="<b>Step 2. System Updates</b>":FBTN "xfce4-terminal  -e 'sudo pacman -Syyu --noconfirm'" \
 --field="<b>Step 3. Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
@@ -31,7 +31,7 @@ yad --plug="$id" --tabnum=2 --form \
 
 
 
-yad --plug="$id" --tabnum=3 --form \
+yad --plug="$id" --tabnum=3 --columns=2 --form \
 --field="<b>Install Steam Native</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'" \
 --field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm heroic-games-launcher-bin gamemode'" \
 --field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'" \
@@ -42,20 +42,20 @@ yad --plug="$id" --tabnum=3 --form \
 
 
 
-yad --plug="$id" --tabnum=4 --form \
+yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="<b>Step 1.Enable Cups/Printer</b>":fbtn "xfce4-terminal -e 'systemctl enable --now cups'" \
 --field="<b>Step 2. Cups/Printer Web Interface</b>":fbtn "xdg-open http://127.0.0.1:631" \
 --field="Reserved":btn "eom" &> /tmp/data4 &
 
 
-yad --plug="$id" --tabnum=5 --form \
+yad --plug="$id" --tabnum=5 --columns=2 --form \
 --field="<b>Distrowatch</b>":fbtn "xdg-open https://distrowatch.com" \
 --field="<b>Merchandise Store</b>":fbtn "xdg-open https://ebuzz-central.creator-spring.com/" \
 --field="<b>Gofund.me Page</b>":fbtn "xdg-open https://gofund.me/d954872d" \
 --field="<b>Patreon Page</b>":fbtn "xdg-open https://patreon.com/benfitzpatrick" &> /tmp/data5 &
 
 
-yad --notebook --key="$id" --center --tab-pos=top --width=480 --height=175 --tab="<b>(1).Welcome</b>" --tab="<b>(2).Maintenance and Updates and Support</b>" --tab="<b>(3).Game Program Installers</b>" --tab="<b>(4).Cups/Printer Installation</b>"  --tab="<b>(5).Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
+yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Welcome</b>" --tab="<b>(2).Maintenance and Updates and Support</b>" --tab="<b>(3).Game Program Installers</b>" --tab="<b>(4).Cups/Printer Installation</b>"  --tab="<b>(5).Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
 --title="Storm OS Maintenance and Utilities Program v2.0.0.1" \
 --text="<b>Greetings $USER Use this tool to Maintain and Upgrade your Storm OS</b>" \
 --justify=center \
