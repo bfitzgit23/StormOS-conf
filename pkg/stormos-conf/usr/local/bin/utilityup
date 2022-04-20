@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo pacman -Syy --noconfirm; sudo pacman -S stormos-conf --noconfirm; killall yad; sysconfig
-
