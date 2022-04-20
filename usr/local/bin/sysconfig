@@ -27,6 +27,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Step 10. Incase warpinator leaves a terminal open click this. </b>":FBTN "xfce4-terminal -e  'killall warpinator'" \
 --field="<b>Step 11. Installation of Lshw for System Info Button</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="<b>Step 12. Lshw for System Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Step 13. Installation of Nvidia-Dkms after install Reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
