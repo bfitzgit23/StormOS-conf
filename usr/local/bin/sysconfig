@@ -7,7 +7,7 @@ echo "$id"
 
 yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
---field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Information on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/" \
+--field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
 --field="<b>Step 1. Install Discord</b>":fbtn "xfce4-terminal -e 'sudo pacman -S discord --noconfirm '" \
@@ -21,13 +21,8 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'sudo pacman -S teamviewer --noconfirm'" \
 --field="<b>Step 6. Activate Teamviewer daemon for remote access</b>":FBTN "xfce4-terminal -e ' teamviewer --daemon start'" \
---field="<b>Step 7. Launch Teamviewer for Remote Support</b>":FBTN "xfce4-terminal -e '/opt/teamviewer/tv_bin/script/teamviewer'" \
---field="<b>Step 8. Install Warpinator to share between computers in your local network</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
---field="<b>Step 9. Launch Warpinator</b>":FBTN "xfce4-terminal -e  'warpinator'" \
---field="<b>Step 10. Incase warpinator leaves a terminal open click this. </b>":FBTN "xfce4-terminal -e  'killall warpinator'" \
---field="<b>Step 11. Installation of Lshw for System Info Button</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
---field="<b>Step 12. Lshw for System Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
---field="<b>Step 13. Installation of Nvidia-Dkms after install Reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
+--field="<b>Step 7. Lshw for System Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Step 8. Installation of Nvidia-Dkms after that reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -39,6 +34,8 @@ yad --plug="$id" --tabnum=3 --columns=2 --form \
 --field="<b>Install ProtonGE Updater</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm proton-community-updater'" \
 --field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'" \
 --field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
+--field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
+--field="<b>Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data3 &
 
 
@@ -57,12 +54,12 @@ yad --plug="$id" --tabnum=5 --columns=2 --form \
 --field="<b>Patreon Page</b>":fbtn "xdg-open https://patreon.com/benfitzpatrick" &> /tmp/data5 &
 
 
-yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Welcome</b>" --tab="<b>(2).Maintenance and Updates and Support</b>" --tab="<b>(3).Game Program Installers</b>" --tab="<b>(4).Cups/Printer Installation</b>"  --tab="<b>(5).Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
---title="Storm OS Maintenance and Utilities Program v2.0.0.1" \
---text="<b>Greetings $USER Use this tool to Maintain and Upgrade your Storm OS</b>" \
+yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Welcome</b>" --tab="<b>(2).Maintenance/Updates/Support</b>" --tab="<b>(3).Game/Utilities Installs</b>" --tab="<b>(4).Cups/Printer Drivers</b>"  --tab="<b>(5).Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
+--title="Storm OS Maintenance and Utilities Program v2.0.0.15" \
+--text="<b>Greetings $USER Use this Utility tool to Maintain and Upgrade your Storm OS</b>" \
 --justify=center \
 --button="Logout":"xfce4-session-logout" \
---button="System Info Lshw Non-Graphical":"xfce4-terminal -H -x sudo lshw -short" \
+--button="System Info Lshw":"xfce4-terminal -H -x sudo lshw -short" \
 --button="System Resources":"xfce4-terminal -H -x top" \
 --button="Update Maintenance Program":"xfce4-terminal -e 'utilityup'" \
 --button="Launch Terminal":"xfce4-terminal" \
