@@ -20,10 +20,12 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Step 3. Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
 --field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'tinstall'" \
---field="<b>Step 6. Lshw for System Info and Decode-dimms for Memory Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
---field="<b>Step 7. Installation of Nvidia-Dkms after that reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
---field="<b>Step 8. (Optional) Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
---field="<b>Step 9. Memory Reader (If you wanted to buy memory)</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
+--field="<b>Step 6. Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Step 7. Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
+--field="<b>Step 8. Installation of Nvidia-Dkms after that reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
+--field="<b>Step 9. (Optional) Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
+--field="<b>Opt1 . Memory Reader (Works on some PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
+--field="<b>Opt2 . Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
