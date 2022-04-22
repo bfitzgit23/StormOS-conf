@@ -20,9 +20,10 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Step 3. Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
 --field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'tinstall'" \
---field="<b>Step 6. Lshw for System Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Step 6. Lshw for System Info and Decode-dimms for Memory Info to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
 --field="<b>Step 7. Installation of Nvidia-Dkms after that reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
 --field="<b>Step 8. (Optional) Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
+--field="<b>Step 9. Memory Reader (If you wanted to buy memory)</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -36,6 +37,7 @@ yad --plug="$id" --tabnum=3 --columns=2 --form \
 --field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
 --field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
 --field="<b>Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
+--field="<b>i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data3 &
 
 

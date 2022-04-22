@@ -1,3 +1,4 @@
 #!/bin/bash
-sudo lshw -short > ~/Documents/info.txt; thunar ~/Documents/ 
+sudo decode-dimms >> ~/Documents/memory-info.txt
+sudo lshw -short >> ~/Documents/system-info.txt; thunar ~/Documents/ 
 #&& kill -9 $PPID
