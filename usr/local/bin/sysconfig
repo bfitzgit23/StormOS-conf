@@ -5,32 +5,26 @@
 id=$(echo $[($RANDOM % ($[10000 - 32000] + 1)) + 10000] )
 echo "$id"
 
-yad --plug="$id" --tabnum=1 --columns=2 --form \
---field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
---field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
---field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
---field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
---field="<b>Step 1. Install Discord</b>":fbtn "xfce4-terminal -e 'sudo pacman -S discord --noconfirm '" \
---field="<b>Step 2. Visit us and Join The StormOS/StormFishOS Discord Channel</b>":fbtn "xdg-open https://discord.gg/36JkjDVUP9" \
---field="Reserved:BTN" "eom" &> /tmp/data1 &
 
-yad --plug="$id" --tabnum=2 --columns=2 --form \
+yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 1. Refresh Mirrors</b>":FBTN "xfce4-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'" \
 --field="<b>Step 2. System Updates</b>":FBTN "xfce4-terminal  -e 'sudo pacman -Syyu --noconfirm'" \
---field="<b>Step 3. Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
+--field="<b>Step 3. (Optional) Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
 --field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'tinstall'" \
---field="<b>Step 6. Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
---field="<b>Step 7. Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
---field="<b>Step 8. Installation of Nvidia-Dkms after that reboot</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
---field="<b>Step 9. (Optional) Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
---field="<b>Opt1 . Memory Reader (Works on some PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
---field="<b>Opt2 . Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
---field="Reserved:BTN" "eom" &> /tmp/data2 &
+--field="<b>Step 6. Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
+--field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
+--field="<b>Step 8. Install Nvidia-Dkms after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
+--field="<b>Opt . Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
+--field="<b>Opt . Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
+--field="<b>Opt . Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Opt . Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
+--field="<b>Opt . Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
+--field="<b>Opt . Block Detail Info</b>":fbtn "xfce4-terminal -H -x 'lsblk'" &> /tmp/data1 &
 
 
 
-yad --plug="$id" --tabnum=3 --columns=2 --form \
+yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Steam Native</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'" \
 --field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm heroic-games-launcher-bin gamemode'" \
 --field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'" \
@@ -38,34 +32,38 @@ yad --plug="$id" --tabnum=3 --columns=2 --form \
 --field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'" \
 --field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
 --field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
---field="<b>Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
---field="<b>i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
---field="Reserved:BTN" "eom" &> /tmp/data3 &
+--field="Reserved:BTN" "eom" &> /tmp/data2 &
 
+
+
+yad --plug="$id" --tabnum=3 --columns=2 --form \
+--field="<b>Step 1.Enable Cups/Printer</b>":fbtn "xfce4-terminal -e 'systemctl enable --now cups'" \
+--field="<b>Step 2. Cups/Printer Web Interface</b>":fbtn "xdg-open http://127.0.0.1:631" \
+--field="<b>(Optional) Epson Drivers</b>":fbtn "xfce4-terminal -e 'epsoninstaller'" \
+--field="<b>HP Drivers (Preinstalled)</b>":btn "eom" &> /tmp/data3 &
 
 
 yad --plug="$id" --tabnum=4 --columns=2 --form \
---field="<b>Step 1.Enable Cups/Printer</b>":fbtn "xfce4-terminal -e 'systemctl enable --now cups'" \
---field="<b>Step 2. Cups/Printer Web Interface</b>":fbtn "xdg-open http://127.0.0.1:631" \
---field="<b>Epson Drivers</b>":fbtn "xfce4-terminal -e 'epsoninstaller'" \
---field="Reserved":btn "eom" &> /tmp/data4 &
-
-
-yad --plug="$id" --tabnum=5 --columns=2 --form \
+--field="<b>Step 1. Install Discord</b>":fbtn "xfce4-terminal -e 'sudo pacman -S discord --noconfirm '" \
+--field="<b>Step 2. Visit us and Join us in The StormOS/StormFishOS Discord Channel</b>":fbtn "xdg-open https://discord.gg/36JkjDVUP9" \
 --field="<b>Distrowatch</b>":fbtn "xdg-open https://distrowatch.com" \
 --field="<b>Merchandise Store</b>":fbtn "xdg-open https://ebuzz-central.creator-spring.com/" \
 --field="<b>Gofund.me Page</b>":fbtn "xdg-open https://gofund.me/d954872d" \
---field="<b>Patreon Page</b>":fbtn "xdg-open https://patreon.com/benfitzpatrick" &> /tmp/data5 &
+--field="<b>Patreon Page</b>":fbtn "xdg-open https://patreon.com/benfitzpatrick" \
+--field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
+--field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
+--field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
+--field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
+--field="Reserved:BTN" "eom" &> /tmp/data4 &
 
-
-yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Welcome</b>" --tab="<b>(2).Maintenance/Updates/Support</b>" --tab="<b>(3).Game/Utilities Installs</b>" --tab="<b>(4).Cups/Printer Drivers</b>"  --tab="<b>(5).Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
---title="Storm OS Maintenance and Utilities Program v2.0.0.15" \
+yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities Installs</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
+--title="Storm OS Maintenance and Utilities Program v3.0.0.1" \
 --text="<b>Greetings $USER Use this Utility tool to Maintain and Upgrade your Storm OS</b>" \
 --justify=center \
 --button="Logout":"xfce4-session-logout" \
---button="System Info Lshw":"xfce4-terminal -H -x sudo lshw -short" \
---button="System Resources":"xfce4-terminal -H -x top" \
---button="Update Maintenance Program":"xfce4-terminal -e 'utilityup'" \
+--button="System Info by Lshw":"xfce4-terminal -H -x sudo lshw -short" \
+--button="System Resources via Top":"xfce4-terminal -H -x top" \
+--button="Update Utility Program":"xfce4-terminal -e 'utilityup'" \
 --button="Launch Terminal":"xfce4-terminal" \
 --button="Launch Browser":"firefox" \
 --button="Exit" \
