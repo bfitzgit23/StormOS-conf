@@ -15,12 +15,12 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 6. Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
 --field="<b>Step 8. Install Nvidia-Dkms after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
---field="<b>Opt . Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
---field="<b>Opt . Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
---field="<b>Opt . Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
---field="<b>Opt . Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
---field="<b>Opt . Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
---field="<b>Opt . Block Detail Info</b>":fbtn "xfce4-terminal -H -x 'lsblk'" &> /tmp/data1 &
+--field="<b>Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
+--field="<b>Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
+--field="<b>Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
+--field="<b>Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
+--field="<b>Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
+--field="<b>Block Detail Info</b>":fbtn "xfce4-terminal -H -x 'lsblk'" &> /tmp/data1 &
 
 
 
@@ -65,7 +65,6 @@ yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --ta
 --button="System Resources via Top":"xfce4-terminal -H -x top" \
 --button="Update Utility Program":"xfce4-terminal -e 'utilityup'" \
 --button="Launch Terminal":"xfce4-terminal" \
---button="Launch Browser":"firefox" \
 --button="Exit" \
 
 
