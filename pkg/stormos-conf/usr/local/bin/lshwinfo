@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo decode-dimms >> ~/Documents/memreader1.txt
+sudo lshw -short >> ~/Documents/system-info.txt; thunar ~/Documents/ 
+#&& kill -9 $PPID

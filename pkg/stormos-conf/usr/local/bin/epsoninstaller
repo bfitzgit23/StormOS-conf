@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo systemctl enable --now ecbd.service sudo systemctl start --now ecbd.service; yay -S epson-inkjet-printer-escpr2 epson-inkjet-printer-escpr imagescan-plugin-networkscan imagescan-plugin-networkscan epson-printer-utility --noconfirm; sudo pacman -S imagescan --noconfirm
