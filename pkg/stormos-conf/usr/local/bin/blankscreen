@@ -1,3 +1,0 @@
-#!/bin/bash
-#Put the Monitor/s to blank and rest for the night until woken up by mouse or keyboard.
-sleep 1; xset dpms force off

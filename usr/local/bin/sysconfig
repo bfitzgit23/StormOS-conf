@@ -32,6 +32,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'" \
 --field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
 --field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
+--field="<b>Install Gnome-Calculator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 

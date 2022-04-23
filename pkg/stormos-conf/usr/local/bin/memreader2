@@ -1,2 +1,0 @@
-#!/bin/bash
-sudo dmidecode --type memory >> ~/Documents/memreader2.txt; thunar ~/Documents/

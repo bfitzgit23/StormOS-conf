@@ -1,2 +1,0 @@
-#!/bin/bash
-sudo pacman -S teamviewer --noconfirm; xfce4-terminal -e "teamviewer --daemon start"
