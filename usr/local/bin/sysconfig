@@ -34,6 +34,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
 --field="<b>Install Gnome-Calculator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'" \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
+--field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
