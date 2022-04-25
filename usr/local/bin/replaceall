@@ -1,0 +1,37 @@
+#!/bin/bash
+#Enhanced by Seeker
+
+while true
+do
+
+
+echo "To replace a specific name or term in a Directory Choose 1"
+echo "To replace a specific name or term in a Filename Choose 2"
+echo "1 Replace Directory"
+echo "2 Replace Filename"
+echo "0 EXIT"
+read answer
+	case $answer in
+	
+	0) break
+	 ;;
+
+
+	1) echo "Replace Directory"
+	            replcdir
+		clear
+
+	;;
+
+
+	2) echo "Replace Filename"
+	            replcfile
+		clear
+
+	;;
+
+
+
+esac
+  done
+ 

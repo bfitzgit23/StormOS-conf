@@ -35,6 +35,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Gnome-Calculator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'" \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
 --field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
+--field="<b>launch Replaceall Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -59,7 +60,7 @@ yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
 --field="Reserved:BTN" "eom" &> /tmp/data4 &
 
-yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Recomended Game/Utilities Installs</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
+yad --notebook --key="$id" --center --tab-pos=top  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities/Scripts</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
 --title="Storm OS Maintenance and Utilities Program v3.0.0.1" \
 --text="<b>Greetings $USER Use this Utility tool to Maintain and Upgrade your Storm OS</b>" \
 --justify=center \
