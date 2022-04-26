@@ -35,7 +35,9 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Gnome-Calculator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'" \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
 --field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
---field="<b>launch Replaceall Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
+--field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
+--field="<b>Install Spotify</b>":FBTN "xfce4-terminal -e 'yay -S spotify  --noconfirm'" \
+--field="<b>launch Replaceall File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
