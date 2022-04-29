@@ -36,8 +36,8 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
 --field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
 --field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
---field="<b>Install Spotify</b>":FBTN "xfce4-terminal -e 'yay -S spotify  --noconfirm'" \
---field="<b>launch Replaceall File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
+--field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
+--field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-terminal -e 'xfce4-display-settings'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -63,7 +63,7 @@ yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="Reserved:BTN" "eom" &> /tmp/data4 &
 
 yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities/Scripts</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
---title="Storm OS Maintenance and Utilities Program v3.0.0.1" \
+--title="Storm OS Utilities Program v4.0.0.1" \
 --text="<b>Greetings $USER Use this Utility tool to Maintain and Upgrade your Storm OS</b>" \
 --justify=center \
 --button="Logout":"xfce4-session-logout" \

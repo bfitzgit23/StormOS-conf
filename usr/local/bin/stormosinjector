@@ -1,0 +1,5 @@
+!#/bin/bash
+echo '[storm-os]
+SigLevel = Optional TrustAll
+Server = https://bfitzgit23.github.io/stormos/$arch' | sudo tee -a  /etc/pacman.conf
+sudo pacman -Syy; sudo pacman -S yad yay zenity stormos-conf --noconfirm
