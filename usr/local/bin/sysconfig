@@ -36,6 +36,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
 --field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
 --field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
+--field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-terminal -e 'xfce4-display-settings'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
