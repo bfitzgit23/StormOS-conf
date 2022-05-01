@@ -16,6 +16,8 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 6. Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
 --field="<b>Step 8. Install Nvidia-Dkms after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
+--field="<b>Step 9. Enable trackpad tap to click FOR LAPTOPS ONLY,  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
+--field="<b>Step 10. Enable power-managment FOR LAPTOPS ONLY as well, (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
 --field="<b>Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
 --field="<b>Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
 --field="<b>Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \

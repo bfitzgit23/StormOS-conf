@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo pacman -S tlp --noconfirm; sudo systemctl enable --now tlp; sudo systemctl start --now tlp
+yay -S auto-cpufreq --noconfirm; sudo systemctl enable --now auto-cpufreq; sudo systemctl start --now autocpu-freq
+sleep 2
+reboot

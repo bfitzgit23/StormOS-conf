@@ -1,0 +1,9 @@
+#!/bin/bash
+echo 'Section "InputClass"
+    Identifier "tap-by-default"
+    MatchIsTouchpad "on"
+    MatchDriver "libinput"
+    Option "Tapping" "on"
+EndSection' | sudo tee -a  /etc/X11/xorg.conf 
+sleep 1
+reboot
