@@ -11,6 +11,7 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 2. System Updates</b>":FBTN "xfce4-terminal  -e 'sudo pacman -Syyu --noconfirm'" \
 --field="<b>Step 3. (Optional) Aur Updates</b>":FBTN "xfce4-terminal -e 'yay -Syyu --noconfirm'" \
 --field="<b>Step 4. (Optional) Arch Keyring Updater</b>":FBTN "xfce4-terminal -e 'upkeyring'" \
+--field="<b>Step 4a. (Optional) Renew Arch Keyring </b>":FBTN "xfce4-terminal -e 'upsystem'" \
 --field="<b>Step 5. Install Teamviewer</b>":FBTN "xfce4-terminal -e 'tinstall'" \
 --field="<b>Step 6. Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
@@ -61,6 +62,7 @@ yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
+--field="<b>StormOS Arch Commands</b>":fbtn '/usr/local/bin/data/commands' \
 --field="Reserved:BTN" "eom" &> /tmp/data4 &
 
 yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities/Scripts</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --image=/usr/share/icons/scalable/apps/stormos.png \
