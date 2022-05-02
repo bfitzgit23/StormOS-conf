@@ -11,5 +11,5 @@ yad --title "Welcome To StormOS" --image='/usr/share/icons/scalable/apps/stormos
 	--image='archlinux' \
 	--pversion='System Version 22.03' \
 	--comments="StormOS is an Arch Linux based distro designed for brand new users of Linux
-	moving over from Windows or MacOS. That being said, myself and/or my team have lives outside developing StormOS, we will NOT and CANNOT spend our time handholding anyone, we mean no offense it is just our  disclaimer! NOR will we help nor handhold anyone with any forks or  their own project based on StormOS! We have a post install application which you can update via a button in the application on the bottom when opened. if you wish to do so, you launch StormOS System Tool, select tab 2 and option 2 first.  Then select the bottom button, then select update maintanance program. Close program then re-open. Hope you enjoy trying out and using StormOS." \
+	moving over from Windows or MacOS. That being said, myself and/or my team have lives outside developing StormOS, we will NOT and CANNOT spend our time handholding anyone, we mean no offense it is just our disclaimer! NOR will we help nor handhold anyone with any forks or  their own project based on StormOS! FYI We have a post install application which you can update via a bottom button on the utility program." \
 	--license='GPL3' \
