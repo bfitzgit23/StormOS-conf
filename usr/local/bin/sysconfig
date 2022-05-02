@@ -42,6 +42,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-terminal -e 'xfce4-display-settings'" \
+--field="<b>launch Download Manager Wgetm</b>":FBTN "xfce4-terminal -e 'wgetm'" \
 --field="Reserved:BTN" "eom" &> /tmp/data2 &
 
 
@@ -75,7 +76,7 @@ yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 -
 --button="System Info by Lshw":"xfce4-terminal -H -x sudo lshw -short" \
 --button="System Resources via Top":"xfce4-terminal -H -x top" \
 --button="Update Utility Program":"xfce4-terminal -e 'utilityup'" \
---button="Launch Terminal":"xfce4-terminal" \
+--button="Add/Remove Software":"pamac-manager %U" \
 --button="Exit" \
 
 
