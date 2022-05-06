@@ -74,6 +74,8 @@ yad --plug="$id" --tabnum=5 --columns=2 --form \
 --field="<b>Visit The Arch Website</b>":fbtn "xdg-open https://archlinux.org/" \
 --field="<b>Explanation of Arch Commands</b>":fbtn "xdg-open https://www.geeksforgeeks.org/pacman-command-in-arch-linux/#:~:text=Pacman%20is%20a%20package%20manager,a%20text%2Dbased%20package%20database." \
 --field="<b>Visit 3rd Party Software for Arch AUR Website</b>":fbtn "xdg-open https://aur.archlinux.org/" \
+--field="<b>Beginner Video Tutorial on Pacman</b>":fbtn "xdg-open https://www.youtube.com/watch?v=TQaHfQrwnXo" \
+--field="<b>Novice/Advanced Video Tutorial on Pacman</b>":fbtn "xdg-open https://www.youtube.com/watch?v=-dEuXTMzRKs" \
 --field="Reserved:BTN" "eom" &> /tmp/data5 &
 
 yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities/Scripts</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --tab="<b>(5).Arch University</b>" --image=/usr/share/icons/scalable/apps/stormos.png \
