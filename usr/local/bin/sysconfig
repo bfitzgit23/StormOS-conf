@@ -23,8 +23,10 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
 --field="<b>Memory Reader 2 Memory Info to Memreader2.txt</b>":FBTN "xfce4-terminal -e 'memreader2'" \
 --field="<b>Blank your Screen/s select here </b>":FBTN "xfce4-terminal -e 'blankscreen'" \
---field="<b>Block Detail Info</b>":fbtn "xfce4-terminal -H -x 'lsblk'" &> /tmp/data1 &
-
+--field="<b>Block Detail Info</b>":fbtn "xfce4-terminal -H -x 'lsblk'" \
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" &> /tmp/data1 &
 
 
 yad --plug="$id" --tabnum=2 --columns=2 --form \
@@ -40,10 +42,15 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Transmission-Gtk</b>":FBTN "xfce4-terminal -e 'sudo pacman -S transmission-gtk  --noconfirm'" \
 --field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
 --field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
+--field="<b>Install Only Office</b>":FBTN "xfce4-terminal -e 'yay -S onlyoffice-bin  --noconfirm'" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-display-settings" \
 --field="<b>launch Download Manager Wgetm</b>":FBTN "wgetm" \
---field="Reserved:BTN" "eom" &> /tmp/data2 &
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" \
+--field="<b>Reserved</b>":btn "" &> /tmp/data2 &
 
 
 
@@ -65,6 +72,7 @@ yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
+--field="<b>Reserved</b>":btn "" \
 --field="Reserved:BTN" "eom" &> /tmp/data4 &
 
 
@@ -76,7 +84,7 @@ yad --plug="$id" --tabnum=5 --columns=2 --form \
 --field="<b>Visit 3rd Party Software for Arch AUR Website</b>":fbtn "xdg-open https://aur.archlinux.org/" \
 --field="<b>Beginner Video Tutorial on Pacman</b>":fbtn "xdg-open https://www.youtube.com/watch?v=TQaHfQrwnXo" \
 --field="<b>Novice/Advanced Video Tutorial on Pacman</b>":fbtn "xdg-open https://www.youtube.com/watch?v=-dEuXTMzRKs" \
---field="Reserved:BTN" "eom" &> /tmp/data5 &
+--field="<b>Reserved</b>:BTN" "eom" &> /tmp/data5 &
 
 yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 --tab="<b>(1).Maintenance/Updates/Support</b>" --tab="<b>(2).Game/Utilities/Scripts</b>" --tab="<b>(3).Cups/Printer Drivers</b>"  --tab="<b>(4).About Us/Donations/Merchandise</b>"  --tab="<b>(5).Arch University</b>" --image=/usr/share/icons/scalable/apps/stormos.png \
 --title="Storm OS Utilities Program v4.0.0.1" \
