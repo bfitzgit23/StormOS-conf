@@ -16,8 +16,10 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 6. Install Lshw</b>":FBTN "xfce4-terminal -e  'sudo pacman -S lshw --noconfirm'" \
 --field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
 --field="<b>Step 8. Install Nvidia-Dkms after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms --noconfirm'" \
---field="<b>Step 9. Enable trackpad tap to click FOR LAPTOPS ONLY,  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
---field="<b>Step 10. Enable power-managment FOR LAPTOPS ONLY as well, (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
+--field="<b>Laptop Section:</b>":btn "" \
+--field="<b>Step 9. Enable trackpad tap to click (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
+--field="<b>Step 10. Enable power-managment  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
+--field="<b>Hardware and Memory Section:</b>":btn "" \
 --field="<b>Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
 --field="<b>Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
 --field="<b>Lshw for System Info and Decode-dimms for Memreader1.txt to Txt</b>":FBTN "xfce4-terminal -e 'lshwinfo'" \
@@ -30,12 +32,14 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 
 
 yad --plug="$id" --tabnum=2 --columns=2 --form \
+--field="<b>Game Related Utilities:</b>":btn "" \
 --field="<b>Install Steam Native</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'" \
 --field="<b>Install Heroic Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm heroic-games-launcher-bin gamemode'" \
 --field="<b>Install Lutris Launcher</b>":fbtn "xfce4-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'" \
 --field="<b>Install ProtonGE Updater</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm proton-community-updater'" \
 --field="<b>Install Mangohud/Goverlay</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'" \
 --field="<b>Install Bottles Launcher</b>":fbtn "xfce4-terminal -e 'yay -S --noconfirm bottles'" \
+--field="<b>System Tools/Utilities:</b>":btn "" \
 --field="<b>Install Warpinator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S warpinator --noconfirm'" \
 --field="<b>Install Gnome-Calculator</b>":FBTN "xfce4-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'" \
 --field="<b>Install Flameshot</b>":FBTN "xfce4-terminal -e 'sudo pacman -S flameshot --noconfirm'" \
@@ -43,11 +47,10 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
 --field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
 --field="<b>Install Only Office</b>":FBTN "xfce4-terminal -e 'yay -S onlyoffice-bin  --noconfirm'" \
+--field="<b>Program Launchers:</b>":btn "" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-display-settings" \
 --field="<b>launch Download Manager Wgetm</b>":FBTN "wgetm" \
---field="<b>Reserved</b>":btn "" \
---field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" &> /tmp/data2 &
