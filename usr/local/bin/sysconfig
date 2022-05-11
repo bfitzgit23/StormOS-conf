@@ -53,7 +53,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-display-settings" \
 --field="<b>launch Download Manager Wgetm</b>":FBTN "wgetm" \
 --field="<b>launch Media Stream Player</b>":FBTN "mstreamplayer" \
---field="<b>Reserved</b>":btn "" \
+--field="<b>Create Launcher for Desktop/Panel</b>":FBTN "sudo exo-desktop-item-edit --create-new /usr/share/applications" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" &> /tmp/data2 &
 
