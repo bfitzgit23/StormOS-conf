@@ -54,6 +54,8 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>launch Download Manager Wgetm</b>":FBTN "wgetm" \
 --field="<b>launch Media Stream Player</b>":FBTN "mstreamplayer" \
 --field="<b>Create Launcher for Desktop/Panel</b>":FBTN "sudo exo-desktop-item-edit --create-new /usr/share/applications" \
+--field="<b>launch Duckduckgo Search Engine</b>":FBTN "dsearch" \
+--field="<b>launch Open Website Link</b>":FBTN "openlink" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" &> /tmp/data2 &
 

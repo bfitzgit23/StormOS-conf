@@ -1,0 +1,13 @@
+#!/bin/bash
+#Enhanced by Seeker
+clear
+
+
+text=$(zenity --entry --text "Duckduckgo search criteria: " --width 600 --height 100)
+
+
+xdg-open "https://duckduckgo.com/?q=$text"
+
+exit 1
+
+
