@@ -47,10 +47,12 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Thunderbird</b>":FBTN "xfce4-terminal -e 'sudo pacman -S thunderbird  --noconfirm'" \
 --field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
 --field="<b>Install Only Office</b>":FBTN "xfce4-terminal -e 'yay -S onlyoffice-bin  --noconfirm'" \
+--field="<b>Install Media Player Installer </b>":FBTN "xfce4-terminal -e 'minstaller'" \
 --field="<b>Program Launchers:</b>":btn "" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-display-settings" \
 --field="<b>launch Download Manager Wgetm</b>":FBTN "wgetm" \
+--field="<b>launch Media Stream Player</b>":FBTN "mstreamplayer" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" \
 --field="<b>Reserved</b>":btn "" &> /tmp/data2 &

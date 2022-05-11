@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+
+url=$(zenity --entry --text "Url Location" --width 600 --height 100)
+#SourceFile=$(zenity --file-selection --save --confirm-overwrite --filename=.mp4 --title “Please select the location of the file you want to save.” --width 500);
+
+
+
+mpv "$url" 
+
+#celluloid
+
+ 
+

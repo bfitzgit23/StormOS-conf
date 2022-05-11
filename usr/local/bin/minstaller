@@ -1,0 +1,11 @@
+#!/bin/bash
+echo installing Mpv
+sudo pacman -S mpv --noconfirm
+sleep 2
+echo injecting mstreamplayer
+#sudo cp -p mstreamplayer /usr/local/bin
+#sudo cp -p minstaller /usr/local/bin
+sudo chmod +x /usr/local/bin/mstreamplayer
+sudo chmod +x /usr/local/bin/minstaller
+sleep 2 
+mstreamplayer
