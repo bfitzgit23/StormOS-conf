@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo pacman -S alltray --noconfirm
+
+sudo chmod +x /usr/local/bin/alltrayinjector.desktop
+sudo chmod +x /usr/local/bin/trayinjector
+
+
+sudo cp /usr/local/bin/alltrayinjector.desktop  ~/.config/autostart/ 
+
+reboot

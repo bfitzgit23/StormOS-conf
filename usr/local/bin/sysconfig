@@ -48,6 +48,7 @@ yad --plug="$id" --tabnum=2 --columns=2 --form \
 --field="<b>Install Xed (Alt) Text Editor</b>":FBTN "xfce4-terminal -e 'sudo pacman -S xed  --noconfirm'" \
 --field="<b>Install Only Office</b>":FBTN "xfce4-terminal -e 'yay -S onlyoffice-bin  --noconfirm'" \
 --field="<b>Install Media Player Installer </b>":FBTN "xfce4-terminal -e 'minstaller'" \
+--field="<b>Install Minimize to Tray (Auto Reboot)</b>":FBTN "xfce4-terminal -e 'trayinjector'" \
 --field="<b>Program Launchers:</b>":btn "" \
 --field="<b>launch Replace all File/Directory Menu</b>":FBTN "xfce4-terminal -e 'replaceall'" \
 --field="<b>launch Xfce4 Display Settings</b>":FBTN "xfce4-display-settings" \
@@ -102,7 +103,7 @@ yad --notebook --key="$id" --center --tab-pos=bottom  --width=480 --height=175 -
 --button="System Resources via Top":"xfce4-terminal -H -x top" \
 --button="Update Utility Program":"xfce4-terminal -e 'utilityup'" \
 --button="Add/Remove Software":"pamac-manager %U" \
---button="Exit" \
+--button="Add StormOS to Tray":"alltray -H sysconfig" \
 
 
 
