@@ -19,6 +19,7 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Laptop Section:</b>":btn "" \
 --field="<b>Step 9. Enable trackpad tap to click (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
 --field="<b>Step 10. Enable power-managment  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
+--field="<b>Step 11. (FOR OPTIMUS/MUX LAPTOPS ONLY!!)  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S supergfxctl --no-confirm'" \
 --field="<b>Hardware and Memory Section:</b>":btn "" \
 --field="<b>Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
 --field="<b>Memory Reader 2 (Works on some PC's also)</b>":FBTN "xfce4-terminal -H -e 'sudo dmidecode --type memory'" \
