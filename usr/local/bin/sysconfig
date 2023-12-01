@@ -17,7 +17,6 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 7. Install i2c-tools for decode-dimms</b>":FBTN "xfce4-terminal -e  'sudo pacman -S i2c-tools --noconfirm'" \
 --field="<b>Step 8. Install Nvidia drivers (dkms) after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm'" \
 --field="<b>Step 9. Install Nvidia-390xx drivers (dkms) after that (Reboot)</b>:FBTN "xfce4-terminal -e 'sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils opencl-nvidia-390xx --noconfirm"'\
---field="<b>Step 9. Install Nvidia-470xx drivers (dkms) after that (Reboot)</b>:FBTN "xfce4-terminal -e 'sudo pacman -S nvidia-470xx-dkms nvidia-470xx-utils opencl-nvidia-470xx --noconfirm"'\
 --field="<b>Laptop Section:</b>":btn "" \
 --field="<b>Step 9. Enable trackpad tap to click (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
 --field="<b>Step 10. Enable power-managment  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
