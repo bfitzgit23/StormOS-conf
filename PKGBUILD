@@ -1,8 +1,8 @@
 # Maintainer: DarkXero <info@techxero.com>
 pkgname=stormos-conf
 _destname1="/"
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="StormOS Configuration Tool"
 arch=('any')
 url="https://github.com/bfitzgit23"
