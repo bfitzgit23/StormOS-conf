@@ -18,8 +18,6 @@ yad --plug="$id" --tabnum=1 --columns=2 --form \
 --field="<b>Step 8. Install Nvidia drivers (dkms) after that, (Reboot)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S nvidia-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm'" \
 --field="<b>Step 9. Install Nvidia-390xx drivers (dkms) after that (Reboot)</b>:FBTN "xfce4-terminal -e 'sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils opencl-nvidia-390xx --noconfirm"'\
 --field="<b>Laptop Section:</b>":btn "" \
---field="<b>Step 9. Enable trackpad tap to click (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'trackpad'" \
---field="<b>Step 10. Enable power-managment  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'pm'" \
 --field="<b>Step 11. (FOR OPTIMUS/MUX LAPTOPS ONLY!!)  (Warning, automated REBOOT)</b>":FBTN "xfce4-terminal -e  'sudo pacman -S supergfxctl --no-confirm; sudo systemctl enable --now supergfxd; sudo reboot'" \
 --field="<b>Hardware and Memory Section:</b>":btn "" \
 --field="<b>Memory Reader (Works on most PC's )</b>":FBTN "xfce4-terminal -H -x 'decode-dimms'" \
@@ -73,12 +71,12 @@ yad --plug="$id" --tabnum=3 --columns=2 --form \
 
 yad --plug="$id" --tabnum=4 --columns=2 --form \
 --field="<b>Step 1. Install Discord</b>":fbtn "xfce4-terminal -e 'sudo pacman -S discord --noconfirm '" \
---field="<b>Step 2. Visit us and Join us in The StormOS/StormFishOS Discord Channel</b>":fbtn "xdg-open https://discord.gg/36JkjDVUP9" \
+--field="<b>Step 2. Visit us and Join us in The StormOS Channel</b>":fbtn "xdg-open https://discord.gg/36JkjDVUP9" \
 --field="<b>Distrowatch</b>":fbtn "xdg-open https://distrowatch.com" \
 --field="<b>Merchandise Store</b>":fbtn "xdg-open https://ebuzz-central.creator-spring.com/" \
 --field="<b>Gofund.me Page</b>":fbtn "xdg-open https://gofund.me/d954872d" \
 --field="<b>Patreon Page</b>":fbtn "xdg-open https://patreon.com/benfitzpatrick" \
---field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "xdg-open https://storm-os.godaddysites.com" \
+--field="<b>Visit The StormOS Site (Soon to Change Hosts)</b>":fbtn "WIP" \
 --field="<b>Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS</b>":fbtn "xdg-open https://sourceforge.net/projects/hackman-linux/files/" \
 --field="<b>Or Visit The StormFish OS Site</b>":fbtn "xdg-open https://sourceforge.net/projects/stormfish-os/" \
 --field="<b>StormOS ReadMe</b>":fbtn '/usr/local/bin/data/about' \
