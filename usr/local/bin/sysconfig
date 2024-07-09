@@ -17,20 +17,21 @@ class MainWindow(Gtk.Window):
         self.set_border_width(10)
         self.set_default_size(600, 400)
 
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.add(vbox)
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.add(hbox)
+
+        notebook_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        hbox.pack_start(notebook_vbox, True, True, 0)
 
         notebook = Gtk.Notebook()
         notebook.set_tab_pos(Gtk.PositionType.LEFT)
-        vbox.pack_start(notebook, True, True, 0)
+        notebook_vbox.pack_start(notebook, True, True, 0)
 
         self.create_maintenance_tab(notebook)
         self.create_game_utilities_tab(notebook)
         self.create_printer_tab(notebook)
-        self.create_about_us_tab(notebook)
         self.create_arch_university_tab(notebook)
-
-        self.add_bottom_buttons(vbox)
+        self.create_about_us_tab(notebook)
 
     def create_button_with_icon(self, label, command, icon_name):
         button = Gtk.Button()
@@ -120,6 +121,30 @@ class MainWindow(Gtk.Window):
         label = Gtk.Label(label="<b>Cups/Printer Drivers</b>", use_markup=True)
         notebook.append_page(grid, label)
 
+    def create_arch_university_tab(self, notebook):
+        grid = Gtk.Grid()
+        grid.set_column_homogeneous(True)
+        grid.set_row_homogeneous(True)
+
+        commands = [
+            ("StormOS Arch Commands", '/usr/local/bin/data/commands', "utilities-terminal"),
+            ("Visit The Arch Wiki", "xdg-open https://wiki.archlinux.org/", "internet-web-browser"),
+            ("Visit The Arch Website", "xdg-open https://archlinux.org/", "internet-web-browser"),
+            ("Explanation of Arch Commands", "xdg-open https://www.geeksforgeeks.org/pacman-command-in-arch-linux/#:~:text=Pacman%20is%20a%20package%20manager,a%20text%2Dbased%20package%20database.", "internet-web-browser"),
+            ("Visit 3rd Party Software for Arch AUR Website", "xdg-open https://aur.archlinux.org/", "internet-web-browser"),
+            ("Beginner Video Tutorial on Pacman", "xdg-open https://www.youtube.com/watch?v=TQaHfQrwnXo", "applications-multimedia"),
+            ("Novice/Advanced Video Tutorial on Pacman", "xdg-open https://www.youtube.com/watch?v=-dEuXTMzRKs", "applications-multimedia")
+        ]
+
+        for i, (label, command, icon_name) in enumerate(commands):
+            button = self.create_button_with_icon(label, command, icon_name)
+            grid.attach(button, 0, i, 1, 1)
+
+        self.add_left_buttons(grid, len(commands))
+
+        label = Gtk.Label(label="<b>Arch University</b>", use_markup=True)
+        notebook.append_page(grid, label)
+
     def create_about_us_tab(self, notebook):
         grid = Gtk.Grid()
         grid.set_column_homogeneous(True)
@@ -145,32 +170,7 @@ class MainWindow(Gtk.Window):
         label = Gtk.Label(label="<b>About Us/Donations/Merchandise</b>", use_markup=True)
         notebook.append_page(grid, label)
 
-    def create_arch_university_tab(self, notebook):
-        grid = Gtk.Grid()
-        grid.set_column_homogeneous(True)
-        grid.set_row_homogeneous(True)
-
-        commands = [
-            ("StormOS Arch Commands", '/usr/local/bin/data/commands', "utilities-terminal"),
-            ("Visit The Arch Wiki", "xdg-open https://wiki.archlinux.org/", "internet-web-browser"),
-            ("Visit The Arch Website", "xdg-open https://archlinux.org/", "internet-web-browser"),
-            ("Explanation of Arch Commands", "xdg-open https://www.geeksforgeeks.org/pacman-command-in-arch-linux/#:~:text=Pacman%20is%20a%20package%20manager,a%20text%2Dbased%20package%20database.", "internet-web-browser"),
-            ("Visit 3rd Party Software for Arch AUR Website", "xdg-open https://aur.archlinux.org/", "internet-web-browser"),
-            ("Beginner Video Tutorial on Pacman", "xdg-open https://www.youtube.com/watch?v=TQaHfQrwnXo", "applications-multimedia"),
-            ("Novice/Advanced Video Tutorial on Pacman", "xdg-open https://www.youtube.com/watch?v=-dEuXTMzRKs", "applications-multimedia")
-        ]
-
-        for i, (label, command, icon_name) in enumerate(commands):
-            button = self.create_button_with_icon(label, command, icon_name)
-            grid.attach(button, 0, i, 1, 1)
-
-        label = Gtk.Label(label="<b>Arch University</b>", use_markup=True)
-        notebook.append_page(grid, label)
-
-    def add_bottom_buttons(self, vbox):
-        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        vbox.pack_start(button_box, False, False, 0)
-
+    def add_left_buttons(self, grid, start_index):
         buttons = [
             ("Logout", "xfce4-session-logout", "system-log-out"),
             ("System Info by Lshw", "xfce4-terminal -H -x sudo lshw -short", "system-help"),
@@ -180,9 +180,9 @@ class MainWindow(Gtk.Window):
             ("Add Utility Tool to Tray", "alltray -H sysconfig", "utilities-terminal")
         ]
 
-        for label, command, icon_name in buttons:
+        for i, (label, command, icon_name) in enumerate(buttons):
             button = self.create_button_with_icon(label, command, icon_name)
-            button_box.pack_start(button, True, True, 0)
+            grid.attach(button, 0, start_index + i, 1, 1)
 
 win = MainWindow()
 win.connect("destroy", Gtk.main_quit)
