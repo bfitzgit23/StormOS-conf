@@ -157,7 +157,7 @@ class MainWindow(Gtk.Window):
             #("Merchandise Store", "xdg-open https://ebuzz-central.creator-spring.com/", "internet-web-browser"),
             ("Gofund.me Page", "xdg-open https://gofund.me/d954872d", "internet-web-browser"),
             ("Patreon Page", "xdg-open https://patreon.com/benfitzpatrick", "internet-web-browser"),
-            ("Visit The StormOS Site (Soon to Change Hosts)", "WIP", "internet-web-browser"),
+            ("Visit The StormOS Site", "https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
             ("Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS", "xdg-open https://sourceforge.net/projects/hackman-linux/files/", "internet-web-browser"),
             #("Or Visit The StormFish OS Site", "xdg-open https://sourceforge.net/projects/stormfish-os/", "internet-web-browser"),
             ("StormOS ReadMe", '/usr/local/bin/data/about', "text-x-generic")
