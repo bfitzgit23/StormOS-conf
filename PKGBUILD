@@ -1,7 +1,7 @@
 # Maintainer: DarkXero <info@techxero.com>
 pkgname=stormos-conf
 _destname1="/"
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="StormOS Configuration Tool"
 arch=('any')
