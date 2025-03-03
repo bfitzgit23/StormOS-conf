@@ -1,9 +1,9 @@
 # Maintainer: DarkXero <info@techxero.com>
-pkgname=stormos-conf
+pkgname=AcreetionOS-XFCE-conf
 _destname1="/"
 pkgver=5.1
 pkgrel=1
-pkgdesc="StormOS Configuration Tool"
+pkgdesc="AcreetionOS-XFCE Configuration Tool"
 arch=('any')
 url="https://github.com/bfitzgit23"
 license=('GPL3')
