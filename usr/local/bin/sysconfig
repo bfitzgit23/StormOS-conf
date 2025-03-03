@@ -13,7 +13,7 @@ import subprocess
 
 class MainWindow(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self, title="StormOS Utilities Program v5.0.0.3")
+        Gtk.Window.__init__(self, title="AcreetionOS-XFCE Utilities Program v5.0.0.3")
         self.set_border_width(10)
         self.set_default_size(600, 400)
 
@@ -127,7 +127,7 @@ class MainWindow(Gtk.Window):
         grid.set_row_homogeneous(True)
 
         commands = [
-            ("StormOS Arch Commands", '/usr/local/bin/data/commands', "utilities-terminal"),
+            ("AcreetionOS-XFCE Arch Commands", '/usr/local/bin/data/commands', "utilities-terminal"),
             ("Visit The Arch Wiki", "xdg-open https://wiki.archlinux.org/", "internet-web-browser"),
             ("Visit The Arch Website", "xdg-open https://archlinux.org/", "internet-web-browser"),
             ("Explanation of Arch Commands", "xdg-open https://www.geeksforgeeks.org/pacman-command-in-arch-linux/#:~:text=Pacman%20is%20a%20package%20manager,a%20text%2Dbased%20package%20database.", "internet-web-browser"),
@@ -152,15 +152,12 @@ class MainWindow(Gtk.Window):
 
         commands = [
             ("Install Discord", "xfce4-terminal -e 'sudo pacman -S discord --noconfirm'", "internet-chat"),
-            ("Visit us and Join us in The StormOS Channel", "xdg-open https://discord.gg/36JkjDVUP9", "internet-web-browser"),
+            ("Visit us and Join us in The AcreetionOS-XFCE Channel", "xdg-open https://discord.gg/2tUvAmcQY5", "internet-web-browser"),
             ("Distrowatch", "xdg-open https://distrowatch.com", "internet-web-browser"),
-            #("Merchandise Store", "xdg-open https://ebuzz-central.creator-spring.com/", "internet-web-browser"),
             ("Gofund.me Page", "xdg-open https://gofund.me/d954872d", "internet-web-browser"),
             ("Patreon Page", "xdg-open https://patreon.com/benfitzpatrick", "internet-web-browser"),
-            ("Visit The StormOS Site", "https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
-            ("Visit The StormOS Sourceforge Site for Direct Downloads and Info on StormOS", "xdg-open https://sourceforge.net/projects/hackman-linux/files/", "internet-web-browser"),
-            #("Or Visit The StormFish OS Site", "xdg-open https://sourceforge.net/projects/stormfish-os/", "internet-web-browser"),
-            ("StormOS ReadMe", '/usr/local/bin/data/about', "text-x-generic")
+            ("Visit The AcreetionOS-XFCE Site", "https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
+            ("AcreetionOS-XFCE ReadMe", '/usr/local/bin/data/about', "text-x-generic")
         ]
 
         for i, (label, command, icon_name) in enumerate(commands):
