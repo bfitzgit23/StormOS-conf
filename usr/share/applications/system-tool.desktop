@@ -1,9 +1,9 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Name=AcreetionOS-XFCE System Tool
-GenericName=AcreetionOS-XFCE System Tool
-X-GNOME-FullName=AcreetionOS-XFCE System Tool
-Comment=Tweak AcreetionOS-XFCE with ease
+Name=StormOS System Tool
+GenericName=StormOS System Tool
+X-GNOME-FullName=StormOS System Tool
+Comment=Tweak StormOS with ease
 Exec=/usr/local/bin/sysconfig
 Icon=/usr/share/icons/scalable/apps/AcreetionOS-XFCE.png
 Terminal=false
