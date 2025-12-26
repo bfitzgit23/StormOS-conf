@@ -61,7 +61,7 @@ class MainWindow(Gtk.Window):
             ("Step 5. Install Teamviewer", "xfce4-terminal -e 'tinstall'", "applications-internet"),
             ("Step 6. Install Lshw", "xfce4-terminal -e 'sudo pacman -S lshw --noconfirm'", "applications-system"),
             ("Step 7. Install i2c-tools for decode-dimms", "xfce4-terminal -e 'sudo pacman -S i2c-tools --noconfirm'", "applications-system"),
-            ("Step 8. Install Nvidia drivers (dkms) after that, (Reboot)", "xfce4-terminal -e 'sudo pacman -S nvidia-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm'", "video-display"),
+            ("Step 8. Install Nvidia drivers (dkms) after that, (Reboot)", "xfce4-terminal -e 'sudo pacman -S nvidia-open-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm'", "video-display"),
             ("Step 9. Install Nvidia-390xx drivers (dkms) after that (Reboot)", "xfce4-terminal -e 'sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils opencl-nvidia-390xx --noconfirm'", "video-display")
         ]
 
