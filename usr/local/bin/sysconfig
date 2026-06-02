@@ -154,7 +154,7 @@ class MainWindow(Gtk.Window):
             ("Install Discord", "gnome-terminal -e 'sudo pacman -S discord --noconfirm'", "internet-chat"),
             ("Visit us and Join us in The StormOS Channel", "xdg-open https://discord.gg/7Ze98XKJVm", "internet-web-browser"),
             ("Distrowatch", "xdg-open https://distrowatch.com", "internet-web-browser"),
-            ("Gofund.me Page", "xdg-open https://gofund.me/d954872d", "internet-web-browser"),
+            ("Paypal Page", "xdg-open https://www.paypal.com/paypalme/fitzpatrick251", "internet-web-browser"),
             ("Patreon Page", "xdg-open https://patreon.com/benfitzpatrick", "internet-web-browser"),
             ("Visit The StormOS Site", "https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
             ("StormOS ReadMe", '/usr/local/bin/data/about', "text-x-generic")
