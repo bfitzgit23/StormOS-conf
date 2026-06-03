@@ -1,15 +1,97 @@
 #!/usr/bin/env python3
+"""
+StormOS Utilities Program v5.1 - Improved Terminal Handling
+Uses gnome-terminal (with fallback) and pkexec for better reliability.
+"""
 
 import os
-import gi
+import shutil
+import subprocess
+import sys
 
 # Ensure GTK 3 is used by setting the GI_TYPELIB_PATH to the correct location
 os.environ['GI_TYPELIB_PATH'] = '/usr/lib/girepository-1.0'
 
+import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-import subprocess
+
+# ============================================================
+# TERMINAL HANDLING (gnome-terminal first, then fallbacks)
+# ============================================================
+
+def find_terminal():
+    """Find available terminal emulator, preferring gnome-terminal."""
+    terminals = ["gnome-terminal", "xfce4-terminal", "xterm", "konsole"]
+    for term in terminals:
+        if shutil.which(term):
+            return shutil.which(term)
+    return None
+
+
+def run_command(command_str, hold=True):
+    """
+    Run a command string in a terminal with proper PTY handling.
+    Uses gnome-terminal if available, else falls back to other terminals.
+    """
+    # Check if command starts with sudo and pkexec exists - use pkexec for GUI password prompt
+    if command_str.startswith("sudo ") and shutil.which("pkexec"):
+        # Replace 'sudo' with 'pkexec'
+        pkexec_cmd = command_str.replace("sudo ", "pkexec ", 1)
+        try:
+            subprocess.Popen(pkexec_cmd, shell=True, start_new_session=True,
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return True
+        except Exception:
+            pass
+
+    term = find_terminal()
+    if not term:
+        error_dialog = Gtk.MessageDialog(parent=None,
+                                         flags=Gtk.DialogFlags.MODAL,
+                                         type=Gtk.MessageType.ERROR,
+                                         buttons=Gtk.ButtonsType.OK,
+                                         message_format="No terminal found.\nPlease install gnome-terminal or xfce4-terminal.")
+        error_dialog.run()
+        error_dialog.destroy()
+        return False
+
+    term_name = os.path.basename(term)
+
+    # Build the shell command that will be run inside the terminal
+    if hold:
+        # Keep terminal open after command finishes
+        shell_cmd = f'bash -c "{command_str}; echo; echo \'Press Enter to close...\'; read"'
+    else:
+        shell_cmd = f'bash -c "{command_str}"'
+
+    # Construct terminal arguments
+    if term_name == "gnome-terminal":
+        # Use -- to separate options from the command
+        args = [term, "--title", "StormOS Utility", "--", "bash", "-c", shell_cmd]
+    elif term_name == "xfce4-terminal":
+        args = [term, "--disable-server", "--title", "StormOS Utility", "--command", shell_cmd]
+    elif term_name == "xterm":
+        args = [term, "-title", "StormOS Utility", "-e", shell_cmd]
+    else:
+        # Generic fallback
+        args = [term, "-e", shell_cmd]
+
+    try:
+        subprocess.Popen(args, start_new_session=True,
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return True
+    except Exception as e:
+        error_dialog = Gtk.MessageDialog(parent=None,
+                                         flags=Gtk.DialogFlags.MODAL,
+                                         type=Gtk.MessageType.ERROR,
+                                         buttons=Gtk.ButtonsType.OK,
+                                         message_format=f"Failed to launch terminal:\n{str(e)}")
+        error_dialog.run()
+        error_dialog.destroy()
+        return False
+
 
 class MainWindow(Gtk.Window):
     def __init__(self):
@@ -45,7 +127,8 @@ class MainWindow(Gtk.Window):
         return button
 
     def run_command(self, widget, command):
-        subprocess.Popen(command, shell=True)
+        """Run the given command string using our improved terminal handler."""
+        run_command(command)
 
     def create_maintenance_tab(self, notebook):
         grid = Gtk.Grid()
@@ -53,16 +136,16 @@ class MainWindow(Gtk.Window):
         grid.set_row_homogeneous(True)
 
         commands = [
-            ("Step 1. Refresh Mirrors", "gnome-terminal -e 'sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist'", "view-refresh"),
-            ("Step 2. System Updates", "gnome-terminal -e 'sudo pacman -Syyu --noconfirm'", "system-software-update"),
-            ("Step 3. (Optional) Aur Updates", "gnome-terminal -e 'yay -Syyu --noconfirm'", "system-software-update"),
-            ("Step 4. (Optional) Arch Keyring Updater", "gnome-terminal -e 'upkeyring'", "system-lock-screen"),
-            ("Step 4a. (Optional) Renew Arch Keyring", "gnome-terminal -e 'upsystem'", "system-lock-screen"),
-            ("Step 5. Install Teamviewer", "gnome-terminal -e 'tinstall'", "applications-internet"),
-            ("Step 6. Install Lshw", "gnome-terminal -e 'sudo pacman -S lshw --noconfirm'", "applications-system"),
-            ("Step 7. Install i2c-tools for decode-dimms", "gnome-terminal -e 'sudo pacman -S i2c-tools --noconfirm'", "applications-system"),
-            ("Step 8. Install Nvidia drivers (dkms) after that, (Reboot)", "gnome-terminal -e 'sudo pacman -S nvidia-open-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm'", "video-display"),
-            ("Step 9. Install Nvidia-390xx drivers (dkms) after that (Reboot)", "gnome-terminal -e 'sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils opencl-nvidia-390xx --noconfirm'", "video-display")
+            ("Step 1. Refresh Mirrors", "sudo reflector --verbose -l 20 --sort rate --save /etc/pacman.d/mirrorlist", "view-refresh"),
+            ("Step 2. System Updates", "sudo pacman -Syyu --noconfirm", "system-software-update"),
+            ("Step 3. (Optional) Aur Updates", "yay -Syyu --noconfirm", "system-software-update"),
+            ("Step 4. (Optional) Arch Keyring Updater", "upkeyring", "system-lock-screen"),
+            ("Step 4a. (Optional) Renew Arch Keyring", "upsystem", "system-lock-screen"),
+            ("Step 5. Install Teamviewer", "tinstall", "applications-internet"),
+            ("Step 6. Install Lshw", "sudo pacman -S lshw --noconfirm", "applications-system"),
+            ("Step 7. Install i2c-tools for decode-dimms", "sudo pacman -S i2c-tools --noconfirm", "applications-system"),
+            ("Step 8. Install Nvidia drivers (dkms) after that, (Reboot)", "sudo pacman -S nvidia-open-dkms lib32-nvidia-utils lib32-opencl-nvidia lib32-primus_vk lib32-libvdpau cuda-tools cuda opencl-nvidia primus_vk --noconfirm", "video-display"),
+            ("Step 9. Install Nvidia-390xx drivers (dkms) after that (Reboot)", "sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils opencl-nvidia-390xx --noconfirm", "video-display")
         ]
 
         for i, (label, command, icon_name) in enumerate(commands):
@@ -78,21 +161,21 @@ class MainWindow(Gtk.Window):
         grid.set_row_homogeneous(True)
 
         commands = [
-            ("Install Steam Native", "gnome-terminal -e 'sudo pacman -S --noconfirm steam-native-runtime gamemode'", "applications-games"),
-            ("Install Heroic Launcher", "gnome-terminal -e 'yay -S --noconfirm heroic-games-launcher-bin gamemode'", "applications-games"),
-            ("Install Lutris Launcher", "gnome-terminal -e 'sudo pacman -S --noconfirm lutris gamemode'", "applications-games"),
-            ("Install ProtonGE Updater", "gnome-terminal -e 'yay -S --noconfirm proton-community-updater'", "applications-games"),
-            ("Install Mangohud/Goverlay", "gnome-terminal -e 'yay -S --noconfirm mangohud goverlay-bin'", "applications-games"),
-            ("Install Bottles Launcher", "gnome-terminal -e 'yay -S --noconfirm bottles'", "applications-games"),
-            ("Install Warpinator", "gnome-terminal -e 'sudo pacman -S warpinator --noconfirm'", "applications-internet"),
-            ("Install Gnome-Calculator", "gnome-terminal -e 'sudo pacman -S gnome-calculator --noconfirm'", "accessories-calculator"),
-            ("Install Flameshot", "gnome-terminal -e 'sudo pacman -S flameshot --noconfirm'", "accessories-screenshot"),
-            ("Install Transmission-Gtk", "gnome-terminal -e 'sudo pacman -S transmission-gtk --noconfirm'", "network-workgroup"),
-            ("Install Thunderbird", "gnome-terminal -e 'sudo pacman -S thunderbird --noconfirm'", "internet-mail"),
-            ("Install Xed (Alt) Text Editor", "gnome-terminal -e 'sudo pacman -S xed --noconfirm'", "accessories-text-editor"),
-            ("Install Only Office", "gnome-terminal -e 'yay -S onlyoffice-bin --noconfirm'", "applications-office"),
-            ("Install Media Stream Installer", "gnome-terminal -e 'minstaller'", "multimedia-video-player"),
-            ("Install Minimize to Tray (Auto Reboot)", "gnome-terminal -e 'trayinjector'", "system-run")
+            ("Install Steam Native", "sudo pacman -S --noconfirm steam-native-runtime gamemode", "applications-games"),
+            ("Install Heroic Launcher", "yay -S --noconfirm heroic-games-launcher-bin gamemode", "applications-games"),
+            ("Install Lutris Launcher", "sudo pacman -S --noconfirm lutris gamemode", "applications-games"),
+            ("Install ProtonGE Updater", "yay -S --noconfirm proton-community-updater", "applications-games"),
+            ("Install Mangohud/Goverlay", "yay -S --noconfirm mangohud goverlay-bin", "applications-games"),
+            ("Install Bottles Launcher", "yay -S --noconfirm bottles", "applications-games"),
+            ("Install Warpinator", "sudo pacman -S warpinator --noconfirm", "applications-internet"),
+            ("Install Gnome-Calculator", "sudo pacman -S gnome-calculator --noconfirm", "accessories-calculator"),
+            ("Install Flameshot", "sudo pacman -S flameshot --noconfirm", "accessories-screenshot"),
+            ("Install Transmission-Gtk", "sudo pacman -S transmission-gtk --noconfirm", "network-workgroup"),
+            ("Install Thunderbird", "sudo pacman -S thunderbird --noconfirm", "internet-mail"),
+            ("Install Xed (Alt) Text Editor", "sudo pacman -S xed --noconfirm", "accessories-text-editor"),
+            ("Install Only Office", "yay -S onlyoffice-bin --noconfirm", "applications-office"),
+            ("Install Media Stream Installer", "minstaller", "multimedia-video-player"),
+            ("Install Minimize to Tray (Auto Reboot)", "trayinjector", "system-run")
         ]
 
         for i, (label, command, icon_name) in enumerate(commands):
@@ -108,9 +191,9 @@ class MainWindow(Gtk.Window):
         grid.set_row_homogeneous(True)
 
         commands = [
-            ("Enable Cups/Printer", "gnome-terminal -e 'systemctl enable --now cups'", "printer"),
+            ("Enable Cups/Printer", "systemctl enable --now cups", "printer"),
             ("Cups/Printer Web Interface", "xdg-open http://127.0.0.1:631", "applications-internet"),
-            ("(Optional) Epson Drivers", "gnome-terminal -e 'epsoninstaller'", "printer"),
+            ("(Optional) Epson Drivers", "epsoninstaller", "printer"),
             ("HP Drivers (Preinstalled)", "eom", "printer")
         ]
 
@@ -151,12 +234,12 @@ class MainWindow(Gtk.Window):
         grid.set_row_homogeneous(True)
 
         commands = [
-            ("Install Discord", "gnome-terminal -e 'sudo pacman -S discord --noconfirm'", "internet-chat"),
+            ("Install Discord", "sudo pacman -S discord --noconfirm", "internet-chat"),
             ("Visit us and Join us in The StormOS Channel", "xdg-open https://discord.gg/7Ze98XKJVm", "internet-web-browser"),
             ("Distrowatch", "xdg-open https://distrowatch.com", "internet-web-browser"),
             ("Paypal Page", "xdg-open https://www.paypal.com/paypalme/fitzpatrick251", "internet-web-browser"),
             ("Patreon Page", "xdg-open https://patreon.com/benfitzpatrick", "internet-web-browser"),
-            ("Visit The StormOS Site", "https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
+            ("Visit The StormOS Site", "xdg-open https://techcafe757.wixsite.com/storm-os", "internet-web-browser"),
             ("StormOS ReadMe", '/usr/local/bin/data/about', "text-x-generic")
         ]
 
@@ -170,9 +253,9 @@ class MainWindow(Gtk.Window):
     def add_left_buttons(self, grid, start_index):
         buttons = [
             ("Logout", "xfce4-session-logout", "system-log-out"),
-            ("System Info by Lshw", "gnome-terminal -H -x sudo lshw -short", "system-help"),
-            ("System Resources via Top", "gnome-terminal -H -x top", "utilities-system-monitor"),
-            ("Update Utility Program", "gnome-terminal -e 'utilityup'", "view-refresh"),
+            ("System Info by Lshw", "sudo lshw -short", "system-help"),
+            ("System Resources via Top", "top", "utilities-system-monitor"),
+            ("Update Utility Program", "utilityup", "view-refresh"),
             ("Add/Remove Software", "/usr/bin/octopi %U", "system-software-install"),
             ("Add Utility Tool to Tray", "alltray -H sysconfig", "utilities-terminal")
         ]
@@ -181,7 +264,13 @@ class MainWindow(Gtk.Window):
             button = self.create_button_with_icon(label, command, icon_name)
             grid.attach(button, 0, start_index + i, 1, 1)
 
-win = MainWindow()
-win.connect("destroy", Gtk.main_quit)
-win.show_all()
-Gtk.main()
+
+def main():
+    win = MainWindow()
+    win.connect("destroy", Gtk.main_quit)
+    win.show_all()
+    Gtk.main()
+
+
+if __name__ == "__main__":
+    main()
