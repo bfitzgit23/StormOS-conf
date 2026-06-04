@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-StormOS Utilities Program v5.1 - Improved Terminal Handling
-Uses gnome-terminal (with fallback) and pkexec for better reliability.
+StormOS Utilities Program v5.1 - Fully working terminal & command execution
+Uses gnome-terminal (with -- syntax) + fallback to xfce4-terminal/xterm.
+Handles sudo commands with pkexec for graphical password prompt.
+Opens URLs and certain desktop commands directly (no terminal).
 """
 
 import os
@@ -9,7 +11,7 @@ import shutil
 import subprocess
 import sys
 
-# Ensure GTK 3 is used by setting the GI_TYPELIB_PATH to the correct location
+# Ensure GTK 3 is used
 os.environ['GI_TYPELIB_PATH'] = '/usr/lib/girepository-1.0'
 
 import gi
@@ -18,34 +20,68 @@ from gi.repository import Gtk
 
 
 # ============================================================
-# TERMINAL HANDLING (gnome-terminal first, then fallbacks)
+# ROBUST COMMAND EXECUTION (same as welcome app)
 # ============================================================
-
 def find_terminal():
-    """Find available terminal emulator, preferring gnome-terminal."""
+    """Return path to available terminal emulator, preferring gnome-terminal."""
     terminals = ["gnome-terminal", "xfce4-terminal", "xterm", "konsole"]
     for term in terminals:
-        if shutil.which(term):
-            return shutil.which(term)
+        path = shutil.which(term)
+        if path:
+            return path
     return None
 
 
-def run_command(command_str, hold=True):
+def needs_terminal(command: str) -> bool:
+    """Determine if a command should be run inside a terminal."""
+    # Commands that are GUI or web links – run directly
+    if command.startswith("xdg-open") or command.startswith("eom"):
+        return False
+    # Already graphical applications
+    if command in ("xfce4-session-logout", "/usr/bin/octopi %U", "alltray -H sysconfig"):
+        return False
+    # Commands that are actually shell scripts or require terminal output
+    if command in ("upkeyring", "upsystem", "tinstall", "minstaller", "trayinjector", "utilityup"):
+        return True
+    # Package installation commands – better to show output
+    if "pacman" in command or "yay" in command or "reflector" in command or "systemctl" in command:
+        return True
+    # lshw, top – need terminal
+    if "lshw" in command or "top" in command:
+        return True
+    return True  # default: run in terminal
+
+
+def run_command(command_str: str, keep_terminal: bool = True):
     """
-    Run a command string in a terminal with proper PTY handling.
-    Uses gnome-terminal if available, else falls back to other terminals.
+    Execute a command string.
+    - For sudo commands, uses pkexec if available (graphical password dialog).
+    - For commands that need a terminal, opens gnome-terminal (or fallback).
+    - For GUI/URL commands, runs directly without terminal.
     """
-    # Check if command starts with sudo and pkexec exists - use pkexec for GUI password prompt
-    if command_str.startswith("sudo ") and shutil.which("pkexec"):
-        # Replace 'sudo' with 'pkexec'
-        pkexec_cmd = command_str.replace("sudo ", "pkexec ", 1)
+    # Special case: direct execution (no terminal)
+    if not needs_terminal(command_str):
         try:
-            subprocess.Popen(pkexec_cmd, shell=True, start_new_session=True,
+            subprocess.Popen(command_str, shell=True, start_new_session=True,
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             return True
-        except Exception:
-            pass
+        except Exception as e:
+            error_dialog = Gtk.MessageDialog(parent=None,
+                                             flags=Gtk.DialogFlags.MODAL,
+                                             type=Gtk.MessageType.ERROR,
+                                             buttons=Gtk.ButtonsType.OK,
+                                             message_format=f"Failed to run command:\n{command_str}\n\n{str(e)}")
+            error_dialog.run()
+            error_dialog.destroy()
+            return False
 
+    # For terminal commands: handle sudo via pkexec if possible
+    if command_str.startswith("sudo ") and shutil.which("pkexec"):
+        # Replace 'sudo' with 'pkexec' for graphical authentication
+        pkexec_cmd = command_str.replace("sudo ", "pkexec ", 1)
+        command_str = pkexec_cmd
+
+    # Find a terminal emulator
     term = find_terminal()
     if not term:
         error_dialog = Gtk.MessageDialog(parent=None,
@@ -57,25 +93,23 @@ def run_command(command_str, hold=True):
         error_dialog.destroy()
         return False
 
-    term_name = os.path.basename(term)
-
-    # Build the shell command that will be run inside the terminal
-    if hold:
-        # Keep terminal open after command finishes
+    # Build the shell command that will be executed inside the terminal
+    if keep_terminal:
         shell_cmd = f'bash -c "{command_str}; echo; echo \'Press Enter to close...\'; read"'
     else:
         shell_cmd = f'bash -c "{command_str}"'
 
-    # Construct terminal arguments
+    term_name = os.path.basename(term)
+
+    # Construct terminal arguments according to the emulator
     if term_name == "gnome-terminal":
-        # Use -- to separate options from the command
+        # Use '--' to separate options from the command
         args = [term, "--title", "StormOS Utility", "--", "bash", "-c", shell_cmd]
     elif term_name == "xfce4-terminal":
         args = [term, "--disable-server", "--title", "StormOS Utility", "--command", shell_cmd]
     elif term_name == "xterm":
         args = [term, "-title", "StormOS Utility", "-e", shell_cmd]
     else:
-        # Generic fallback
         args = [term, "-e", shell_cmd]
 
     try:
@@ -93,6 +127,9 @@ def run_command(command_str, hold=True):
         return False
 
 
+# ============================================================
+# MAIN WINDOW (unchanged, but button command strings are passed as is)
+# ============================================================
 class MainWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="StormOS Utilities Program v5.1")
@@ -123,11 +160,12 @@ class MainWindow(Gtk.Window):
         box.pack_start(image, False, False, 5)
         box.pack_start(label_widget, False, False, 5)
         button.add(box)
+        # Connect to the improved run_command
         button.connect("clicked", self.run_command, command)
         return button
 
     def run_command(self, widget, command):
-        """Run the given command string using our improved terminal handler."""
+        """Execute command using robust handler."""
         run_command(command)
 
     def create_maintenance_tab(self, notebook):
